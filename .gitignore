@@ -1,0 +1,83 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# User-specific files
+.vscode/
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+Generated\_Code/
+**/*.designer.cs
+**/*.g.cs
+**/*.g.i.cs
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored if NuGet restore is used
+**/[Pp]ackages/
+# Uncomment if necessary to ignore package dependency directories
+# node_modules/
+# jspm_packages/
+
+# Resharper files
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Web specific
+wwwroot/
+node_modules/
+dist/
+
+# Publish
+*.publishsettings
+*.Publish.xml
+
+# Visual Studio Code specific
+.vscode/*
+.vscode
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# IDE directories
+.idea
+.ionide
+
+# Rider IDE
+.idea/
+.idea/*
+
+# Dotnet specific
+*.pidb
+*.aps
+*.pdb
+*.ilk
+*.lib
+*.nlog
+*.tgz
+
+# Azure Pipelines
+logs/
+*.cache
+*.config
+
+# Docker specific
+docker-compose.override.yml
