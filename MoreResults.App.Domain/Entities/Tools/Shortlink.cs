@@ -25,5 +25,5 @@ public class Shortlink: EntityAbstract
         return this;
     }
 
-    protected Shortlink() { }
+    public Shortlink() { }
 }

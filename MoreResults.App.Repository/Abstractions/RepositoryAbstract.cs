@@ -14,7 +14,7 @@ public class RepositoryAbstract<T>: IRepository<T> where T : EntityAbstract
         Context = context;
     }
 
-    public async Task<T?> GetById(int id)
+    public async Task<T?> GetByIdAsync(int id)
     {
         T? result = await Context
             .Set<T>()
@@ -23,7 +23,7 @@ public class RepositoryAbstract<T>: IRepository<T> where T : EntityAbstract
         return result;
     }
 
-    public async Task<IEnumerable<T>> List(Func<T, bool> filter)
+    public async Task<IEnumerable<T>> ListAsync(Func<T, bool> filter)
     {
         return await Task.Run(() =>
         {
@@ -36,13 +36,13 @@ public class RepositoryAbstract<T>: IRepository<T> where T : EntityAbstract
         });
     }
 
-    public async Task<T> Add(T entity)
+    public async Task<T> AddAsync(T entity)
     {
         await Context.Set<T>().AddAsync(entity);
         return entity;
     }
 
-    public async Task<T> Update(T entity)
+    public async Task<T> UpdateAsync(T entity)
     {
         T? entityFound = await Context
             .Set<T>()

@@ -17,5 +17,5 @@ public class ShortlinkAccess: EntityAbstract
         Ip = ip;
     }
 
-    protected ShortlinkAccess() { }
+    public ShortlinkAccess() { }
 }

@@ -34,15 +34,15 @@ public class ShortlinkMap : IEntityTypeConfiguration<Shortlink>
             .IsRequired();
 
         builder
-            .Property(a => a.Link)
-            .HasColumnName("LINK")
-            .HasComment("LINK A SER DIRECIONADO")
+            .Property(a => a.Resume)
+            .HasColumnName("RESUME")
+            .HasComment("DESCRIÇÃO RESUMIDA OU RESUMO A RESPEITO DO LINK")
             .IsRequired();
 
         builder
             .Property(a => a.Link)
-            .HasColumnName("RESUME")
-            .HasComment("DESCRIÇÃO RESUMIDA OU TÍTULO DO LINK")
+            .HasColumnName("LINK")
+            .HasComment("LINK PARA O QUAL O USUÁRIO SERÁ REDIRECIONADO")
             .IsRequired();
 
         builder

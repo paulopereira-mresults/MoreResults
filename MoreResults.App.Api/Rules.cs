@@ -1,4 +1,4 @@
-﻿using MoreResults.App.Business.Rules;
+﻿using MoreResults.App.Business.Rules.Tools;
 using MoreResults.App.Infrastructure.Contexts;
 using MoreResults.App.IoC;
 using MoreResults.App.IoC.Rules.Tools;

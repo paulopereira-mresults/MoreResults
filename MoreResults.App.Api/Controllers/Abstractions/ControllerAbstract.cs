@@ -13,4 +13,5 @@ public abstract class ControllerAbstract : ControllerBase
     {
         UnitOfWork = uow;
     }
+
 }

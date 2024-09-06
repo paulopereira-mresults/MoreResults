@@ -8,20 +8,20 @@ public interface IRepository<T> where T : EntityAbstract
     /// <summary>
     /// Recupera um registro a partir do seu id
     /// </summary>
-    Task<T?> GetById(int id);
+    Task<T?> GetByIdAsync(int id);
 
     /// <summary>
     /// Alista registros a partir de uma expressão lambda
     /// </summary>
-    Task<IEnumerable<T>> List(Func<T, bool> filter);
+    Task<IEnumerable<T>> ListAsync(Func<T, bool> filter);
 
     /// <summary>
     /// Salva um novo registro no banco de dados.
     /// </summary>
-    Task<T> Add(T entity);
+    Task<T> AddAsync(T entity);
 
     /// <summary>
     /// Atualiza um registro no banco de dados.
     /// </summary>
-    Task<T> Update(T entity);
+    Task<T> UpdateAsync(T entity);
 }
