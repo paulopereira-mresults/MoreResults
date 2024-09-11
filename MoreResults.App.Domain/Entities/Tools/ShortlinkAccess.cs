@@ -15,7 +15,11 @@ public class ShortlinkAccess: EntityAbstract
     {
         ShortlinkId = shortlinkId;
         Ip = ip;
+        CreateDate = DateTime.Now;
     }
 
-    public ShortlinkAccess() { }
+    public ShortlinkAccess()
+    {
+        CreateDate = DateTime.Now;
+    }
 }
