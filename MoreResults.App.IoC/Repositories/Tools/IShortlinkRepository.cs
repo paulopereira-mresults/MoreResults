@@ -5,5 +5,5 @@ namespace MoreResults.App.IoC.Repositories.Tools;
 
 public interface IShortlinkRepository : IRepository<Shortlink>
 {
-    Task<Shortlink?> GetByCodeAsync(string code);
+    Task<Shortlink?> GetByCodeAsync(string code, CancellationToken cancellationToken);
 }

@@ -1,11 +1,11 @@
 ﻿using MoreResults.App.Business.Features.Abstractions;
 using MoreResults.App.Domain.Entities.Tools;
 
-namespace MoreResults.App.Business.Features.Tools.Shortlinks.Commands;
+namespace MoreResults.App.Business.Features.Tools.Shortlinks.Validators;
 
 public class ShortlinkValidator : ValidatorAbstract<Shortlink>
 {
-    public ValidatorAbstract<Shortlink> Validate(Shortlink? shortlink)
+    public ValidatorAbstract<Shortlink> ValidationForAddOrUpdate(Shortlink? shortlink)
     {
         if (shortlink is null)
         {
@@ -14,11 +14,19 @@ public class ShortlinkValidator : ValidatorAbstract<Shortlink>
         }
 
         Requires()
-            .AreEquals(shortlink.Code.Length, 5, nameof(shortlink.Code), "Código gerado incorretamente.")
+            .IsLowerOrEqualsThan(shortlink.Code.Length, 4, nameof(shortlink.Code), "Código gerado incorretamente.")
             .IsGreaterOrEqualsThan(shortlink.Resume, 10, nameof(shortlink.Resume), "Mínimo: 10 caracteres.")
             .IsLowerOrEqualsThan(shortlink.Resume, 100, nameof(shortlink.Resume), "Máximo: 100 caracteres.")
             .IsUrlOrEmpty(shortlink.Link, nameof(shortlink.Link), "Link inválido")
             ;
+
+        return this;
+    }
+
+    public ValidatorAbstract<Shortlink> ValidationForDelete(Shortlink? shortlink)
+    {
+        Requires()
+            .IsNotNull(shortlink, nameof(Shortlink), "O link a ser apagado não existe.");
 
         return this;
     }

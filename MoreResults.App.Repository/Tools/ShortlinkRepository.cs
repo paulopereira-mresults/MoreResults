@@ -12,6 +12,6 @@ public class ShortlinkRepository : RepositoryAbstract<Shortlink>, IShortlinkRepo
     {
     }
 
-    public async Task<Shortlink?> GetByCodeAsync(string code) 
-        => await Context.Shortlinks.FirstOrDefaultAsync(x => x.Code == code);
+    public async Task<Shortlink?> GetByCodeAsync(string code, CancellationToken cancellationToken) 
+        => await Context.Shortlinks.FirstOrDefaultAsync(x => x.Code == code, cancellationToken);
 }

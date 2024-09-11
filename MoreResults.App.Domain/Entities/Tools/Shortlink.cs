@@ -13,17 +13,23 @@ public class Shortlink: EntityAbstract
 
     public Shortlink(string link, string resume)
     {
-        Code = "ABCDEFGHIJLMNOPQRSTUVXZKWY0123456789".GenerateRandomCode(4);
+        CreateDate = DateTime.Now;
+        Code = "ABCDEFGHIJLMNOPQRSTUVXZKWY0123456789".GenerateRandomCode(5);
         Link = link;
         Resume = resume;
     }
 
     public Shortlink Update(string link, string resume)
     { 
+        UpdateDate = DateTime.Now;
         Link = link;
         Resume = resume;
         return this;
     }
 
-    public Shortlink() { }
+    public Shortlink()
+    {
+        CreateDate = DateTime.Now;
+        Code = "ABCDEFGHIJLMNOPQRSTUVXZKWY0123456789".GenerateRandomCode(5);
+    }
 }

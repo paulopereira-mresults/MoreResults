@@ -1,4 +1,5 @@
 ﻿using MoreResults.App.Business.Features.Abstractions;
+using MoreResults.App.Business.Features.Tools.Shortlinks.Validators;
 using MoreResults.App.Business.Interfaces;
 using MoreResults.App.Domain.Dto;
 using MoreResults.App.Domain.Entities.Tools;
@@ -18,13 +19,13 @@ public class UpdateShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeatur
          _validator = new ShortlinkValidator();
     }
 
-    public async Task<DefaultResponseDto<Shortlink>> Handle(Shortlink request)
+    public async Task<DefaultResponseDto<Shortlink>> Handle(Shortlink request, CancellationToken cancellationToken)
     {
-        Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(request.Id);
+        Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(request.Id, cancellationToken);
         shortlink.Update(request.Link, request.Resume);
 
-        if (_validator.Validate(shortlink).IsValid)
-            shortlink = await Repositories.Shortlink.UpdateAsync(request);
+        if (_validator.ValidationForAddOrUpdate(shortlink).IsValid)
+            shortlink = await Repositories.Shortlink.UpdateAsync(request, cancellationToken);
 
         return DefaultResponseDto<Shortlink>
             .Create(shortlink)

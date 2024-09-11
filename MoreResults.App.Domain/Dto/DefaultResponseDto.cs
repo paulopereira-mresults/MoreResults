@@ -6,6 +6,7 @@ public class DefaultResponseDto<T>
 {
     public T Result { get; set; }
     public IEnumerable<Notification> Notifications { get; set; }
+    public int Total { get; set; }
     public bool IsValid { get
         {
             return (Notifications != null && Notifications.Any()) ? false: true ;
@@ -24,7 +25,12 @@ public class DefaultResponseDto<T>
         Result = result;
     }
 
-    public static DefaultResponseDto<T> Create(T result) => new DefaultResponseDto<T>(result);
+    public static DefaultResponseDto<T> Create(T content, int total = 1)
+    {
+        DefaultResponseDto<T> response = new DefaultResponseDto<T>(content);
+        response.Total = total;
+        return response;
+    }
     
 
     public DefaultResponseDto<T> AddNotifications(IEnumerable<Notification> notifications)

@@ -14,6 +14,7 @@
     <ProjectReference Include="..\MoreResults.App.Domain\MoreResults.App.Domain.csproj" />
     <ProjectReference Include="..\MoreResults.App.IoC\MoreResults.App.IoC.csproj" />
     <ProjectReference Include="..\MoreResults.App.Repository\MoreResults.App.Repository.csproj" />
+    <ProjectReference Include="..\MoreResults.App.Services\MoreResults.App.Services.csproj" />
     <ProjectReference Include="..\MoreResults.App.Shared\MoreResults.App.Shared.csproj" />
   </ItemGroup>
 
