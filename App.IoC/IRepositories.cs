@@ -1,0 +1,12 @@
+﻿using App.IoC.Repositories.Tools;
+
+namespace App.IoC;
+
+public partial interface IRepositories
+{
+    #region Repositories - Module Basic
+    IShortlinkRepository Shortlink { get; }
+    IShortlinkAccessRepository ShortlinkAccess { get; }
+    #endregion
+
+}

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flunt.Extensions.Br" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App.Domain\App.Domain.csproj" />
+    <ProjectReference Include="..\App.IoC\App.IoC.csproj" />
+    <ProjectReference Include="..\App.Repository\App.Repository.csproj" />
+    <ProjectReference Include="..\App.Services\App.Services.csproj" />
+    <ProjectReference Include="..\App.Shared\App.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

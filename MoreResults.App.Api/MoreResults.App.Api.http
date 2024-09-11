@@ -1,6 +1,0 @@
-@MoreResults.App.Api_HostAddress = http://localhost:5241
-
-GET {{MoreResults.App.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
