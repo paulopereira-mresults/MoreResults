@@ -8,4 +8,5 @@ public interface IUnitOfWork
     /// Conjunto de regras de negócio
     /// </summary>
     IRules Rules { get; }
+
 }

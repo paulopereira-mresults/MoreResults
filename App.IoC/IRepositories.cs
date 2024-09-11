@@ -1,4 +1,5 @@
-﻿using App.IoC.Repositories.Tools;
+﻿using App.IoC.Repositories.System;
+using App.IoC.Repositories.Tools;
 
 namespace App.IoC;
 
@@ -9,4 +10,7 @@ public partial interface IRepositories
     IShortlinkAccessRepository ShortlinkAccess { get; }
     #endregion
 
+    #region Repositories - Module System
+    IPluginRepository Plugin { get; }
+    #endregion
 }
