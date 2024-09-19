@@ -9,7 +9,7 @@ namespace App.Api.Controllers.Tools;
 /// <summary>
 /// Controla o fluxo de links encurtados: listar, exibir, atualizar e apagar.
 /// </summary>
-[Route("[controller]")]
+[Route("tools/[controller]")]
 [ApiController]
 public class ShortlinksController : ControllerAbstract
 {

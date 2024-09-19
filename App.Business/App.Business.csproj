@@ -18,9 +18,4 @@
     <ProjectReference Include="..\App.Shared\App.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\System\Plugins\Commands\" />
-    <Folder Include="Features\System\Plugins\Validators\" />
-  </ItemGroup>
-
 </Project>

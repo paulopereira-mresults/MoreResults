@@ -1,9 +1,10 @@
 ﻿using App.Domain.Entities.Abstractions;
+using App.Shared.Helpers;
 
 namespace App.Domain.Entities.System;
 
 /// <summary>
-/// Plugins podem ser desenvolvidos para interceptar ações antes e depois da execução do controller.
+/// Plugins podem ser desenvolvidos para interceptar ações antes e depois da execução dos controllers.
 /// </summary>
 public class Plugin: EntityAbstract
 {
@@ -31,4 +32,26 @@ public class Plugin: EntityAbstract
     /// Código fonte do plugin que fará a interceptação do controller.
     /// </summary>
     public string Source { get; set; }
+
+    public Plugin()
+    {
+        Code = StringHelper.GenerateRandomCode(5);
+        CreateDate = DateTime.Now;
+        IsActive = true;
+    }
+
+    public Plugin(string controller, string resume, string source): this()
+    {
+        Controller = controller;
+        Resume  = resume;
+        Source = source;
+    }
+
+    public void Update(string controller, string resume, string source, bool isActive)
+    {
+        Controller = controller;
+        Resume = resume;
+        Source = source;
+        IsActive = isActive;
+    }
 }

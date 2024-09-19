@@ -9,10 +9,25 @@ public interface IPluginBusiness:IBusiness
     /// <summary>
     /// Alista todos os plugins existentes no sistema
     /// </summary>
-    Task<DefaultResponseDto<IEnumerable<Plugin>>> List(CancellationToken cancellationToken);
+    Task<DefaultResponseDto<IEnumerable<Plugin>>> ListAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Recupera as informações de um plugin específico a partir de um ID.
     /// </summary>
-    Task<DefaultResponseDto<Plugin>> GetById(int id, CancellationToken cancellationToken);
+    Task<DefaultResponseDto<Plugin>> GetByIdAsync(int id, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Salva um novo plugin
+    /// </summary>
+    Task<DefaultResponseDto<Plugin>> AddAsync(Plugin plugin, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Atualiza um plugin já cadastrado
+    /// </summary>
+    Task<DefaultResponseDto<Plugin>> UpdateAsync(Plugin plugin, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Apaga um plugin cadastrado
+    /// </summary>
+    Task<DefaultResponseDto<bool>> DeleteAsync(int id, CancellationToken cancellationToken);
 }

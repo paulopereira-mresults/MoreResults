@@ -1,5 +1,5 @@
 ﻿using App.Domain.Entities.Abstractions;
-using App.Shared.ExtensionMethods;
+using App.Shared.Helpers;
 
 namespace App.Domain.Entities.Tools;
 
@@ -14,7 +14,7 @@ public class Shortlink: EntityAbstract
     public Shortlink(string link, string resume)
     {
         CreateDate = DateTime.Now;
-        Code = "ABCDEFGHIJLMNOPQRSTUVXZKWY0123456789".GenerateRandomCode(5);
+        Code = StringHelper.GenerateRandomCode(5);
         Link = link;
         Resume = resume;
     }
@@ -30,6 +30,6 @@ public class Shortlink: EntityAbstract
     public Shortlink()
     {
         CreateDate = DateTime.Now;
-        Code = "ABCDEFGHIJLMNOPQRSTUVXZKWY0123456789".GenerateRandomCode(5);
+        Code = StringHelper.GenerateRandomCode(5);
     }
 }

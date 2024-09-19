@@ -173,31 +173,4 @@ public static class StringExtension
         if (string.IsNullOrEmpty(value)) return string.Empty;
         return value.Length <= maxLength ? value : value.Substring(0, maxLength);
     }
-
-    /// <summary>
-    /// Gera um código aleatório a partir de uma string fornecida.
-    /// </summary>
-    public static string GenerateRandomCode(this string characters, int length = 4)
-    {
-        if (string.IsNullOrEmpty(characters))
-        {
-            throw new ArgumentException("A string de caracteres não pode ser nula ou vazia.", nameof(characters));
-        }
-
-        if (length <= 0)
-        {
-            throw new ArgumentException("O comprimento do código deve ser um número positivo.", nameof(length));
-        }
-
-        Random random = new Random();
-        char[] code = new char[length];
-
-        for (int i = 0; i < length; i++)
-        {
-            int index = random.Next(characters.Length);
-            code[i] = characters[index];
-        }
-
-        return new string(code);
-    }
 }
