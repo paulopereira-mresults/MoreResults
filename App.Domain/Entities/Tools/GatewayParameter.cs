@@ -42,4 +42,9 @@ public class GatewayParameter: EntityAbstract
     /// Instância do gateway a que pertence este parâmetro.
     /// </summary>
     public Gateway GatewayInstance { get; set; }
+
+    /// <summary>
+    /// Validações do parâmetro.
+    /// </summary>
+    public ICollection<GatewayValidation> Validations { get; set; }
 }

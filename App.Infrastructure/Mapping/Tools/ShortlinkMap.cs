@@ -9,7 +9,7 @@ public class ShortlinkMap : IEntityTypeConfiguration<Shortlink>
     public void Configure(EntityTypeBuilder<Shortlink> builder)
     {
         builder
-            .ToTable("TOOLS_SHORTLINKS");
+            .ToTable($"TOOLS_{nameof(Shortlink).ToUpper()}");
 
         builder
             .HasKey(a => a.Id);

@@ -28,4 +28,9 @@ public class GatewayValidation: EntityAbstract
     /// Valor de comparação
     /// </summary>
     public string ComparisonValue { get; set; }
+
+    /// <summary>
+    /// Instância do parâmetro a ser validado.
+    /// </summary>
+    public GatewayParameter ParameterInstance { get; set; }
 }
