@@ -1,0 +1,35 @@
+﻿using App.Business.Features.Abstractions;
+using App.Business.Features.Tools.Gateway.Validations;
+using App.Business.Interfaces;
+using App.Domain.Dto;
+using App.Domain.Entities.Tools;
+using App.IoC;
+
+namespace App.Business.Features.Tools.Gateway.Commands;
+
+public class AddCategoryCommandHandler : FeatureAbstract<GatewayCategory>, IFeature<DefaultResponseDto<GatewayCategory>, GatewayCategory>
+{
+    private readonly GatewayCategoryValidation _validation;
+
+    public AddCategoryCommandHandler(IRepositories repositories) : base(repositories)
+    { 
+        _validation = new GatewayCategoryValidation();
+    }
+
+    public async Task<DefaultResponseDto<GatewayCategory>> Handle(GatewayCategory command, CancellationToken cancellationToken)
+    {
+        GatewayCategory category = new GatewayCategory(command.Name, command.Description);
+
+        if (_validation.ValidationForAddOrUpdate(category).IsValid)
+        {
+            return DefaultResponseDto<GatewayCategory>
+                .Create(command, 0)
+                .AddNotifications(_validation.Notifications);
+        }
+
+        category = await Repositories.GatewayCategory.AddAsync(category, cancellationToken);
+
+        return DefaultResponseDto<GatewayCategory>
+                .Create(command, 1);
+    }
+}

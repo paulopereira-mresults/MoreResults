@@ -7,6 +7,8 @@ public partial interface IRules
 {
     #region Business - Module Tools
     IShortlinkBusiness Shortlink { get; }
+
+    IGatewayCategoryBusiness GatewayCategory { get; }
     #endregion
 
     #region Business - Module System

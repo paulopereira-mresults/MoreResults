@@ -13,6 +13,8 @@ public partial class Rules: IRules
 
     #region Business - Module Tools
     public IShortlinkBusiness Shortlink { get; }
+
+    public IGatewayCategoryBusiness GatewayCategory { get; }
     #endregion
 
 
@@ -26,6 +28,8 @@ public partial class Rules: IRules
 
         #region Business - Module Tools
         Shortlink = new ShortlinkBusiness(_repositories);
+
+        GatewayCategory = new GatewayCategoryBusiness(_repositories);
         #endregion
 
 

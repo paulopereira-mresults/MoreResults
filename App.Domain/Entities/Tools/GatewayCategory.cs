@@ -21,4 +21,23 @@ public class GatewayCategory:EntityAbstract
     /// Lista de gateways pertencentes a categoria.
     /// </summary>
     public ICollection<Gateway> Gateways { get; set; }
+
+    public GatewayCategory()
+    {
+        
+    }
+
+    public GatewayCategory(string name, string description)
+    {
+        Name = name;
+        Description = description;
+        CreateDate = DateTime.Now;
+    }
+
+    public void Update(string name, string description)
+    {
+        Name = name;
+        Description = description;
+        UpdateDate = DateTime.Now;
+    }
 }
