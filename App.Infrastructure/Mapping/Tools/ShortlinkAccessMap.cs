@@ -16,23 +16,23 @@ public class ShortlinkAccessMap : IEntityTypeConfiguration<ShortlinkAccess>
 
         builder
             .Property(a => a.CreateDate)
-            .HasColumnName("CREATEDATE")
+            .HasColumnName(nameof(ShortlinkAccess.CreateDate).ToUpper())
             .IsRequired();
 
         builder
             .Property(a => a.UpdateDate)
-            .HasColumnName("UPDATEDATE")
+            .HasColumnName(nameof(ShortlinkAccess.UpdateDate).ToUpper())
             .IsRequired(false)
             .HasDefaultValue(null);
 
         builder
             .Property(a => a.Ip)
-            .HasColumnName("IP")
+            .HasColumnName(nameof(ShortlinkAccess.Ip).ToUpper())
             .IsRequired(true);
 
         builder
             .Property(a => a.ShortlinkId)
-            .HasColumnName("SHORTLINK_ID")
+            .HasColumnName(nameof(ShortlinkAccess.ShortlinkId).ToUpper())
             .IsRequired(true);
 
     }

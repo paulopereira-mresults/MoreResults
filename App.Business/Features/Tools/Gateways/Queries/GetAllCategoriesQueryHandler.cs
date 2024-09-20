@@ -4,7 +4,7 @@ using App.Domain.Dto;
 using App.Domain.Entities.Tools;
 using App.IoC;
 
-namespace App.Business.Features.Tools.Gateway.Queries;
+namespace App.Business.Features.Tools.Gateways.Queries;
 
 public class GetAllCategoriesQueryHandler : FeatureAbstract<GatewayCategory>, IFeature<DefaultResponseDto<IEnumerable<GatewayCategory>>, int>
 {

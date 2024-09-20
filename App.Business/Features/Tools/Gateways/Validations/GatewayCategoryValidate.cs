@@ -1,9 +1,9 @@
 ﻿using App.Business.Features.Abstractions;
 using App.Domain.Entities.Tools;
 
-namespace App.Business.Features.Tools.Gateway.Validations;
+namespace App.Business.Features.Tools.Gateways.Validations;
 
-public class GatewayCategoryValidation: ValidatorAbstract<GatewayCategory>
+public class GatewayCategoryValidate: ValidatorAbstract<GatewayCategory>
 {
     public ValidatorAbstract<GatewayCategory> ValidationForAddOrUpdate(GatewayCategory? entity)
     {

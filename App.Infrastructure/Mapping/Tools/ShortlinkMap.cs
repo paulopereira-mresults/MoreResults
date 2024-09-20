@@ -16,33 +16,28 @@ public class ShortlinkMap : IEntityTypeConfiguration<Shortlink>
 
         builder
             .Property(a => a.CreateDate)
-            .HasColumnName("CREATEDATE")
-            .IsRequired()
-            .HasComment("DATA DE CRIAÇÃO DO REGISTRO");
+            .HasColumnName(nameof(Shortlink.CreateDate).ToUpper())
+            .IsRequired();
 
         builder
             .Property(a => a.UpdateDate)
-            .HasColumnName("UPDATEDATE")
+            .HasColumnName(nameof(Shortlink.UpdateDate).ToUpper())
             .IsRequired(false)
-            .HasDefaultValue(null)
-            .HasComment("DATA DE ATUALIZAÇÃO DO REGISTRO");
+            .HasDefaultValue(null);
 
         builder
             .Property(a => a.Code)
-            .HasColumnName("CODE")
-            .HasComment("CÓDIGO DO LINK CURTO")
+            .HasColumnName(nameof(Shortlink.Code).ToUpper())
             .IsRequired();
 
         builder
             .Property(a => a.Resume)
-            .HasColumnName("RESUME")
-            .HasComment("DESCRIÇÃO RESUMIDA OU RESUMO A RESPEITO DO LINK")
+            .HasColumnName(nameof(Shortlink.Resume).ToUpper())
             .IsRequired();
 
         builder
             .Property(a => a.Link)
-            .HasColumnName("LINK")
-            .HasComment("LINK PARA O QUAL O USUÁRIO SERÁ REDIRECIONADO")
+            .HasColumnName(nameof(Shortlink.Link).ToUpper())
             .IsRequired();
 
         builder

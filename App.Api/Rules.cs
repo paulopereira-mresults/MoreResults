@@ -15,6 +15,7 @@ public partial class Rules: IRules
     public IShortlinkBusiness Shortlink { get; }
 
     public IGatewayCategoryBusiness GatewayCategory { get; }
+    public IGatewayBusiness Gateway { get; }
     #endregion
 
 
@@ -30,6 +31,7 @@ public partial class Rules: IRules
         Shortlink = new ShortlinkBusiness(_repositories);
 
         GatewayCategory = new GatewayCategoryBusiness(_repositories);
+        Gateway = new GatewayBusiness(_repositories);
         #endregion
 
 

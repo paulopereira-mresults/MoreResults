@@ -1,6 +1,6 @@
 ﻿using App.Business.Abstractions;
-using App.Business.Features.Tools.Gateway.Commands;
-using App.Business.Features.Tools.Gateway.Queries;
+using App.Business.Features.Tools.Gateways.Commands;
+using App.Business.Features.Tools.Gateways.Queries;
 using App.Domain.Dto;
 using App.Domain.Entities.Tools;
 using App.IoC;

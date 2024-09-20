@@ -46,4 +46,31 @@ public class Gateway : EntityAbstract
     /// Categoria a que pertence este gateway.
     /// </summary>
     public GatewayCategory Category { get; set; }
+
+    public Gateway()
+    {
+        
+    }
+
+    public Gateway(int categoryId, string code, string title, string resume, EGatewayType type)
+    {
+        CategoryId = categoryId;
+        IsActive = false;
+        Code = code;
+        Title = title;
+        Resume = resume;
+        Type = type;
+        CreateDate = DateTime.Now;
+    }
+
+    public void Update(int categoryId, bool isActive, string code, string title, string resume, EGatewayType type)
+    {
+        CategoryId = categoryId;
+        IsActive = isActive;
+        Code = code;
+        Title = title;
+        Resume = resume;
+        Type = type;
+        UpdateDate = DateTime.Now;
+    }
 }

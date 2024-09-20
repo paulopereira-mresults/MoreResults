@@ -10,6 +10,7 @@ public partial interface IRepositories
     IShortlinkAccessRepository ShortlinkAccess { get; }
 
     IGatewayCategoryRepository GatewayCategory { get; }
+    IGatewayRepository Gateway { get; }
     #endregion
 
     #region Repositories - Module System
