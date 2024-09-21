@@ -10,9 +10,7 @@ namespace App.Api.Controllers.Tools
     [ApiController]
     public class GatewayController : ControllerAbstract
     {
-        public GatewayController(IUnitOfWork uow) : base(uow)
-        {
-        }
+        public GatewayController(IUnitOfWork uow) : base(uow) { }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Gateway gateway, CancellationToken cancellationToken)
@@ -29,14 +27,14 @@ namespace App.Api.Controllers.Tools
         }
 
         /// <summary>
-        /// Alista todas as categorias cadastradas.
+        /// Alista todas os gateways cadastrados.
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> List(CancellationToken cancellationToken)
         {
-            DefaultResponseDto<IEnumerable<GatewayCategory>> response = await  UnitOfWork
+            DefaultResponseDto<IEnumerable<Gateway>> response = await  UnitOfWork
                 .Rules
-                .GatewayCategory
+                .Gateway
                 .GetAll(cancellationToken);
 
             if (response.IsInvalid)
@@ -51,9 +49,9 @@ namespace App.Api.Controllers.Tools
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
         {
-            DefaultResponseDto<GatewayCategory> response = await UnitOfWork
+            DefaultResponseDto<Gateway> response = await UnitOfWork
                 .Rules
-                .GatewayCategory
+                .Gateway
                 .Get(cancellationToken);
 
             if (response.IsInvalid)
@@ -66,12 +64,12 @@ namespace App.Api.Controllers.Tools
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] GatewayCategory category, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update([FromBody] Gateway gateway, CancellationToken cancellationToken)
         {
-            DefaultResponseDto<GatewayCategory> response = await UnitOfWork
+            DefaultResponseDto<Gateway> response = await UnitOfWork
                 .Rules
-                .GatewayCategory
-                .Update(category, cancellationToken);
+                .Gateway
+                .Update(gateway, cancellationToken);
 
             if (response.IsInvalid)
                 return BadRequest(response);
@@ -84,7 +82,7 @@ namespace App.Api.Controllers.Tools
         {
             DefaultResponseDto<bool> response = await UnitOfWork
                 .Rules
-                .GatewayCategory
+                .Gateway
                 .Delete(id, cancellationToken);
 
             if (response.IsInvalid)
@@ -92,6 +90,7 @@ namespace App.Api.Controllers.Tools
 
             return Ok(response);
         }
+
 
     }
 }

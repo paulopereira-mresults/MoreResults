@@ -9,6 +9,7 @@ public partial interface IRules
     IShortlinkBusiness Shortlink { get; }
 
     IGatewayCategoryBusiness GatewayCategory { get; }
+    IGatewayParameterBusiness GatewayParameter { get; }
     IGatewayBusiness Gateway { get; }
     #endregion
 

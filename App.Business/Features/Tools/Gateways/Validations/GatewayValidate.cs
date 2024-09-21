@@ -19,4 +19,13 @@ public class GatewayValidate : ValidatorAbstract<Gateway>
 
         return this;
     }
+
+    public ValidatorAbstract<Gateway> ValidationForDelete(Gateway? entity)
+    {
+        Requires()
+            .IsNotNull(entity, nameof(Gateway), "O gateway a ser removido não existe.")
+            ;
+
+        return this;
+    }
 }

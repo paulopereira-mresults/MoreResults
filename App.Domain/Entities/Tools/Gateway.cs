@@ -63,11 +63,10 @@ public class Gateway : EntityAbstract
         CreateDate = DateTime.Now;
     }
 
-    public void Update(int categoryId, bool isActive, string code, string title, string resume, EGatewayType type)
+    public void Update(int categoryId, bool isActive, string title, string resume, EGatewayType type)
     {
         CategoryId = categoryId;
         IsActive = isActive;
-        Code = code;
         Title = title;
         Resume = resume;
         Type = type;

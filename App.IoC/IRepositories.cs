@@ -11,6 +11,7 @@ public partial interface IRepositories
 
     IGatewayCategoryRepository GatewayCategory { get; }
     IGatewayRepository Gateway { get; }
+    IGatewayParameterRepository GatewayParameter { get; }
     #endregion
 
     #region Repositories - Module System

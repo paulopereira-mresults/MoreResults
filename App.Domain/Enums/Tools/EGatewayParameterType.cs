@@ -1,22 +1,30 @@
-﻿namespace App.Domain.Enums.Tools;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace App.Domain.Enums.Tools;
 
 /// <summary>
 /// Tipos possíveis de parâmetros.
 /// </summary>
 public enum EGatewayParameterType: int
 {
-    /// <summary>
-    /// Número inteiro.
-    /// </summary>
-    Integer = 1,
+    [Display(Name = "Boleano")]
+    Boolean = 1,
 
-    /// <summary>
-    /// Número decimal.
-    /// </summary>
-    Decimal = 2,
+    [Display(Name = "Número inteiro")]
+    Integer = 2,
 
-    /// <summary>
-    /// Texto livre
-    /// </summary>
-    String = 3,
+    [Display(Name = "Número decimal")]
+    Decimal = 3,
+
+    [Display(Name = "Texto")]
+    String = 4,
+
+    [Display(Name = "Data e hora")]
+    Datetime = 5,
+
+    [Display(Name = "Data")]
+    Date = 6,
+
+    [Display(Name = "Hora")]
+    Hour = 7
 }
