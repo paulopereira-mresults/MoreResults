@@ -21,7 +21,6 @@ public class DefaultContext : DbContext
     public DbSet<GatewayCategory> GatewayCategories { get; set; }
     public DbSet<GatewayParameter> GatewayParameters { get; set; }
     public DbSet<GatewaySchedule> GatewaySchedules { get; set; }
-    public DbSet<GatewayValidation> GatewayValidations { get; set; }
     #endregion
 
     #region Módule - System
@@ -40,7 +39,6 @@ public class DefaultContext : DbContext
         modelBuilder.ApplyConfiguration(new GatewayCategoryMap());
         modelBuilder.ApplyConfiguration(new GatewayParameterMap());
         modelBuilder.ApplyConfiguration(new GatewayScheduleMap());
-        modelBuilder.ApplyConfiguration(new GatewayValidationMap());
         #endregion
 
         #region Módule - System

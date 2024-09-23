@@ -2,6 +2,7 @@
 using App.Infrastructure.Contexts;
 using App.IoC.Repositories.Tools;
 using App.Repository.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Repository.Tools;
 
@@ -11,4 +12,9 @@ public class GatewayRepository : RepositoryAbstract<Gateway>, IGatewayRepository
     {
     }
 
+    public async Task<Gateway> GetByCodeAsync(string code)
+    {
+        Gateway? gateway = await Context.Gateways.Where(x => x.Code == code).FirstOrDefaultAsync();
+        return gateway;
+    }
 }

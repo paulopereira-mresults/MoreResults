@@ -46,7 +46,7 @@ namespace App.Api.Controllers.Tools
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
         {
             DefaultResponseDto<Gateway> response = await UnitOfWork
@@ -91,6 +91,21 @@ namespace App.Api.Controllers.Tools
             return Ok(response);
         }
 
+        /// <summary>
+        /// Executa um endpoint que para requisições GET.
+        /// </summary>
+        [HttpGet("{code}")]
+        [HttpPost("{code}")]
+        [HttpPut("{code}")]
+        [HttpDelete("{code}")]
+        public async Task<IActionResult> Execute([FromRoute] string code, [FromQuery] dynamic query, CancellationToken cancellationToken)
+        {
+            var response = await UnitOfWork
+                .Rules
+                .Gateway
+                .Execute(code, query, cancellationToken);
 
+            return Ok();
+        }
     }
 }

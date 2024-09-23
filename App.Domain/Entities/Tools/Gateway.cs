@@ -47,12 +47,17 @@ public class Gateway : EntityAbstract
     /// </summary>
     public GatewayCategory Category { get; set; }
 
+    /// <summary>
+    /// Conteúdo a ser executado pelo gateway
+    /// </summary>
+    public string Content { get; set; }
+
     public Gateway()
     {
         
     }
 
-    public Gateway(int categoryId, string code, string title, string resume, EGatewayType type)
+    public Gateway(int categoryId, string code, string title, string resume, string content, EGatewayType type)
     {
         CategoryId = categoryId;
         IsActive = false;
@@ -63,7 +68,7 @@ public class Gateway : EntityAbstract
         CreateDate = DateTime.Now;
     }
 
-    public void Update(int categoryId, bool isActive, string title, string resume, EGatewayType type)
+    public void Update(int categoryId, bool isActive, string title, string resume, string content, EGatewayType type)
     {
         CategoryId = categoryId;
         IsActive = isActive;

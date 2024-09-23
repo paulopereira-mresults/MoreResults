@@ -12,4 +12,5 @@ public interface IGatewayBusiness : IBusiness
     Task<DefaultResponseDto<Gateway>> Get(CancellationToken cancellationToken);
     Task<DefaultResponseDto<Gateway>> Update(Gateway category, CancellationToken cancellationToken);
     Task<DefaultResponseDto<bool>> Delete(int id, CancellationToken cancellationToken);
+    Task<DefaultResponseDto<dynamic>> Execute(string code, dynamic parameters, CancellationToken cancellationToken);
 }

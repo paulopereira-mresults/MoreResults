@@ -18,7 +18,7 @@ public class AddGatewayCommandHandler : FeatureAbstract<GatewayCategory>, IFeatu
 
     public async Task<DefaultResponseDto<Gateway>> Handle(Gateway command, CancellationToken cancellationToken)
     {
-        Gateway gateway = new Gateway(command.CategoryId, command.Code, command.Title, command.Resume, command.Type);
+        Gateway gateway = new Gateway(command.CategoryId, command.Code, command.Title, command.Resume, command.Content, command.Type);
 
         if (_validation.ValidationForAddOrUpdate(gateway).IsValid)
         {

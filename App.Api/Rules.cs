@@ -16,7 +16,6 @@ public partial class Rules: IRules
 
     public IGatewayCategoryBusiness GatewayCategory { get; }
     public IGatewayParameterBusiness GatewayParameter { get; }
-    public IGatewayParameterValidationBusiness GatewayParameterValidation { get; }
     public IGatewayBusiness Gateway { get; }
     #endregion
 
@@ -34,7 +33,6 @@ public partial class Rules: IRules
 
         GatewayCategory = new GatewayCategoryBusiness(_repositories);
         GatewayParameter = new GatewayParameterBusiness(_repositories);
-        GatewayParameterValidation = new GatewayParameterValidationBusiness(_repositories);
         Gateway = new GatewayBusiness(_repositories);
         #endregion
 

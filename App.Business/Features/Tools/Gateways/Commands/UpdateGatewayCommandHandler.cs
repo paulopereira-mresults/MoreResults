@@ -20,7 +20,7 @@ public class UpdateGatewayCommandHandler : FeatureAbstract<Gateway>, IFeature<De
     {
         Gateway? gateway = await Repositories.Gateway.GetByIdAsync(command.Id, cancellationToken);
 
-        gateway?.Update(command.CategoryId, command.IsActive, command.Title, command.Resume, command.Type);
+        gateway?.Update(command.CategoryId, command.IsActive, command.Title, command.Resume, command.Content, command.Type);
 
         if (_validation.ValidationForAddOrUpdate(gateway).IsValid)
         {

@@ -43,11 +43,6 @@ public class GatewayParameter: EntityAbstract
     /// </summary>
     public Gateway GatewayInstance { get; set; }
 
-    /// <summary>
-    /// Validações do parâmetro.
-    /// </summary>
-    public ICollection<GatewayValidation> Validations { get; set; }
-
     public GatewayParameter() { }
 
     public GatewayParameter(int gatewayId, bool isRequired, EGatewayParameterType type, string name, string resume, string value)

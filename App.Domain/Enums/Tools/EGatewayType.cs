@@ -1,15 +1,12 @@
-﻿namespace App.Domain.Enums.Tools;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace App.Domain.Enums.Tools;
 
 public enum EGatewayType : int
 {
-    /// <summary>
-    /// Realiza operações dentro dos próprios gateways.
-    /// </summary>
-    Gateway = 1,
+    [Display(Name = "Banco de dados MySQL")]
+    DBMySQL = 11,
 
-    /// <summary>
-    /// Realiza operações em bancos de dados.
-    /// </summary>
-    Database = 2
-    
+    [Display(Name = "Banco de dados SQL Server")]
+    DBSQLServer = 12
 }

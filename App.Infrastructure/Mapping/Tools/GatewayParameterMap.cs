@@ -45,9 +45,5 @@ public class GatewayParameterMap : IEntityTypeConfiguration<GatewayParameter>
             .HasColumnName(nameof(GatewayParameter.Value).ToUpper())
             .IsRequired();
 
-        builder
-            .HasMany(x => x.Validations)
-            .WithOne(x => x.ParameterInstance)
-            .HasForeignKey(x => x.ParameterId);
     }
 }
