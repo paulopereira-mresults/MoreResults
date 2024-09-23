@@ -14,6 +14,7 @@ public partial class Repositories : IRepositories
     public IShortlinkAccessRepository ShortlinkAccess { get; private set; }
 
     public IGatewayRepository Gateway { get; private set; }
+    public IGatewayCredentialRepository GatewayCredential { get; private set; }
     public IGatewayCategoryRepository GatewayCategory { get; private set; }
     public IGatewayParameterRepository GatewayParameter { get; private set; }
     public IGatewayScheduleRepository GatewaySchedule { get; private set; }
@@ -30,6 +31,7 @@ public partial class Repositories : IRepositories
         ShortlinkAccess = new ShortlinkAccessRepository(defaultContext);
 
         Gateway = new GatewayRepository(defaultContext);
+        GatewayCredential = new GatewayCredentialRepository(defaultContext);
         GatewayCategory = new GatewayCategoryRepository(defaultContext);
         GatewayParameter = new GatewayParameterRepository(defaultContext);
         GatewaySchedule = new GatewayScheduleRepository(defaultContext);

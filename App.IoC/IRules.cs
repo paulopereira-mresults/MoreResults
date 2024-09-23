@@ -11,6 +11,7 @@ public partial interface IRules
     IGatewayCategoryBusiness GatewayCategory { get; }
     IGatewayParameterBusiness GatewayParameter { get; }
     IGatewayBusiness Gateway { get; }
+    IGatewayCredentialBusiness GatewayCredential { get; }
     #endregion
 
     #region Business - Module System

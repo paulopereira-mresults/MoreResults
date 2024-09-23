@@ -59,5 +59,11 @@ public class GatewayMap : IEntityTypeConfiguration<Gateway>
             .HasMany(x => x.Parameters)
             .WithOne(x => x.GatewayInstance)
             .HasForeignKey(x => x.GatewayId);
+
+        builder
+            .HasMany(x => x.Credentials)
+            .WithOne(x => x.GatewayInstance)
+            .HasForeignKey(x => x.GatewayId);
+
     }
 }

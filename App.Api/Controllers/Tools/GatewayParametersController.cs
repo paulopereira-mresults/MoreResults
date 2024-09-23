@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.Tools
 {
-    [Route("tools/[controller]")]
+    [Route("tools/gateways/{gatewayId}/parameters")]
     [ApiController]
     public class GatewayParametersController : ControllerAbstract
     {
@@ -14,7 +14,7 @@ namespace App.Api.Controllers.Tools
         {
         }
 
-        [HttpGet("{gatewayId}/by-gateway")]
+        [HttpGet]
         public async Task<IActionResult> List([FromRoute] int gatewayId, CancellationToken cancellationToken)
         {
             DefaultResponseDto<IEnumerable<GatewayParameter>> response = await  UnitOfWork
@@ -31,7 +31,7 @@ namespace App.Api.Controllers.Tools
             return Ok(response);
         }
 
-        [HttpGet("{id}/by-id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] int id, CancellationToken cancellationToken)
         {
             DefaultResponseDto<GatewayParameter> response = await UnitOfWork

@@ -18,6 +18,7 @@ public class DefaultContext : DbContext
     public DbSet<ShortlinkAccess> ShortlinksAccesses { get; set; }
 
     public DbSet<Gateway> Gateways { get; set; }
+    public DbSet<GatewayCredential> GatewayCredentials { get; set; }
     public DbSet<GatewayCategory> GatewayCategories { get; set; }
     public DbSet<GatewayParameter> GatewayParameters { get; set; }
     public DbSet<GatewaySchedule> GatewaySchedules { get; set; }
@@ -36,6 +37,7 @@ public class DefaultContext : DbContext
         modelBuilder.ApplyConfiguration(new ShortlinkAccessMap());
 
         modelBuilder.ApplyConfiguration(new GatewayMap());
+        modelBuilder.ApplyConfiguration(new GatewayCredentialMap());
         modelBuilder.ApplyConfiguration(new GatewayCategoryMap());
         modelBuilder.ApplyConfiguration(new GatewayParameterMap());
         modelBuilder.ApplyConfiguration(new GatewayScheduleMap());

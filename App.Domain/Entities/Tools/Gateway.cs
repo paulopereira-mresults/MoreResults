@@ -43,6 +43,11 @@ public class Gateway : EntityAbstract
     public ICollection<GatewayParameter> Parameters { get; set; }
 
     /// <summary>
+    /// Credenciais de acesso ao Gateway
+    /// </summary>
+    public ICollection<GatewayCredential> Credentials { get; set; }
+
+    /// <summary>
     /// Categoria a que pertence este gateway.
     /// </summary>
     public GatewayCategory Category { get; set; }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.Tools
 {
-    [Route("tools/[controller]")]
+    [Route("tools/categories")]
     [ApiController]
     public class GatewayCategoriesController : ControllerAbstract
     {

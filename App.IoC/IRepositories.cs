@@ -11,6 +11,7 @@ public partial interface IRepositories
 
     IGatewayCategoryRepository GatewayCategory { get; }
     IGatewayRepository Gateway { get; }
+    IGatewayCredentialRepository GatewayCredential { get; }
     IGatewayParameterRepository GatewayParameter { get; }
     #endregion
 

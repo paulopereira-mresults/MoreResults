@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers.Tools
 {
-    [Route("tools/[controller]")]
+    [Route("tools/gateways")]
     [ApiController]
     public class GatewayController : ControllerAbstract
     {
@@ -92,18 +92,73 @@ namespace App.Api.Controllers.Tools
         }
 
         /// <summary>
-        /// Executa um endpoint que para requisições GET.
+        /// Este endpoint deve ser usando quando a requisição envolver exclusivamente a busca, exibição ou listagem de dados.
         /// </summary>
+        /// <param name="code">Código do gateway</param>
+        /// <param name="parameters">Parâmetros para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento da requisição</param>
+        /// <returns></returns>
         [HttpGet("{code}")]
-        [HttpPost("{code}")]
-        [HttpPut("{code}")]
-        [HttpDelete("{code}")]
-        public async Task<IActionResult> Execute([FromRoute] string code, [FromQuery] dynamic query, CancellationToken cancellationToken)
+        public async Task<IActionResult> ExecuteGet([FromRoute] string code, [FromQuery] dynamic parameters, CancellationToken cancellationToken)
         {
             var response = await UnitOfWork
                 .Rules
                 .Gateway
-                .Execute(code, query, cancellationToken);
+                .Execute(HttpMethod.Get, code, parameters, cancellationToken);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Este endpoint deve ser usando quando a requisição envolver exclusivamente o salvamento de novos dados.
+        /// </summary>
+        /// <param name="code">Código do gateway</param>
+        /// <param name="parameters">Parâmetros para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento da requisição</param>
+        /// <returns></returns>
+        [HttpPost("{code}")]
+        public async Task<IActionResult> ExecutePost([FromRoute] string code, [FromBody] dynamic parameters, CancellationToken cancellationToken)
+        {
+            var response = await UnitOfWork
+                .Rules
+                .Gateway
+                .Execute(HttpMethod.Post, code, parameters, cancellationToken);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Este endpoint deve ser usando quando a requisição envolver exclusivamente a atualização dados.
+        /// </summary>
+        /// <param name="code">Código do gateway</param>
+        /// <param name="parameters">Parâmetros para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento da requisição</param>
+        /// <returns></returns>
+        [HttpPut("{code}")]
+        public async Task<IActionResult> ExecutePut([FromRoute] string code, [FromBody] dynamic parameters, CancellationToken cancellationToken)
+        {
+            var response = await UnitOfWork
+                .Rules
+                .Gateway
+                .Execute(HttpMethod.Put, code, parameters, cancellationToken);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Este endpoint deve ser usando quando a requisição envolver exclusivamente a deleção de dados.
+        /// </summary>
+        /// <param name="code">Código do gateway</param>
+        /// <param name="parameters">Parâmetros para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento da requisição</param>
+        /// <returns></returns>
+        [HttpDelete("{code}")]
+        public async Task<IActionResult> ExecuteDelete([FromRoute] string code, [FromBody] dynamic parameters, CancellationToken cancellationToken)
+        {
+            var response = await UnitOfWork
+                .Rules
+                .Gateway
+                .Execute(HttpMethod.Delete, code, parameters, cancellationToken);
 
             return Ok();
         }
