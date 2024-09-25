@@ -2,6 +2,6 @@
 
 namespace App.Business.Features.Abstractions;
 
-public abstract class ValidatorAbstract<T>: Contract<T>
+public abstract class ValidatorAbstract<T> : Contract<T>
 {
 }

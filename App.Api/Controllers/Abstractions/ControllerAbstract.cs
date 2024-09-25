@@ -8,14 +8,14 @@ namespace App.Api.Controllers.Abstractions;
 [ApiController]
 public abstract class ControllerAbstract : ControllerBase
 {
-    public readonly PluginExecution Plugins;
+  public readonly PluginExecution Plugins;
 
-    public IUnitOfWork UnitOfWork { get; private set; }
+  public IUnitOfWork UnitOfWork { get; private set; }
 
-    protected ControllerAbstract(IUnitOfWork uow)
-    {
-        UnitOfWork = uow;
-        Plugins = new PluginExecution(@"C:\MorePlugins");
-    }
+  protected ControllerAbstract(IUnitOfWork uow)
+  {
+    UnitOfWork = uow;
+    Plugins = new PluginExecution(@"C:\MorePlugins");
+  }
 
 }

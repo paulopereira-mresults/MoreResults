@@ -7,13 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.ConfigureDatabase("Default");
 builder
     .Services
-    .AddControllers().ConfigureApiBehaviorOptions(options => 
+    .AddControllers().ConfigureApiBehaviorOptions(options =>
     {
-        /**
-         * Suprime a valida��o de ModelState padr�o do .NET.
-         * @see https://stackoverflow.com/questions/54942192/how-can-i-customize-the-error-response-in-web-api-with-net-core
-         */
-        options.SuppressModelStateInvalidFilter = true;
+      /**
+       * Suprime a valida��o de ModelState padr�o do .NET.
+       * @see https://stackoverflow.com/questions/54942192/how-can-i-customize-the-error-response-in-web-api-with-net-core
+       */
+      options.SuppressModelStateInvalidFilter = true;
     });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
