@@ -3,6 +3,7 @@ using Hangfire.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using App.Api.Middlewares;
 using App.Infrastructure.Contexts;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace App.Api;
 

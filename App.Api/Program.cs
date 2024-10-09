@@ -1,10 +1,13 @@
 using App.Api;
+using App.Infrastructure.Contexts;
 using App.IoC;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adicione o DbContext ao cont�iner de DI
 builder.ConfigureDatabase("Default");
+
 builder
     .Services
     .AddControllers().ConfigureApiBehaviorOptions(options =>
