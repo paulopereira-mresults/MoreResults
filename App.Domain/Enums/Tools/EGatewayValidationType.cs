@@ -1,6 +1,6 @@
 ﻿namespace App.Domain.Enums.Tools;
 
-public enum EGatewayValidationType:int
+public enum EGatewayValidationType : int
 {
-    
+
 }

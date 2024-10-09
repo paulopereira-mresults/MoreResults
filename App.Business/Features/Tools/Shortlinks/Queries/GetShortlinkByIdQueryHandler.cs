@@ -9,17 +9,17 @@ namespace App.Business.Features.Tools.Shortlinks.Queries;
 
 public class GetShortlinkByIdQueryHandler : FeatureAbstract<Shortlink>, IFeature<DefaultResponseDto<Shortlink>, int>
 {
-    public GetShortlinkByIdQueryHandler(IRepositories repositories) : base(repositories)
-    {
-    }
+  public GetShortlinkByIdQueryHandler(IRepositories repositories) : base(repositories)
+  {
+  }
 
-    public async Task<DefaultResponseDto<Shortlink>> Handle(int command, CancellationToken cancellationToken)
-    {
-        Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(command, cancellationToken);
+  public async Task<DefaultResponseDto<Shortlink>> Handle(int command, CancellationToken cancellationToken)
+  {
+    Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(command, cancellationToken);
 
-        if (shortlink is not null)
-            await new AddOneVisitorOnShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
+    if (shortlink is not null)
+      await new AddOneVisitorOnShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
 
-        return DefaultResponseDto<Shortlink>.Create(shortlink);
-    }
+    return DefaultResponseDto<Shortlink>.Create(shortlink);
+  }
 }

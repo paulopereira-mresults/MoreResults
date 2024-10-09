@@ -9,17 +9,17 @@ namespace App.Business.Features.Tools.Shortlinks.Queries;
 
 public class GetShortlinkByCodeQueryHandler : FeatureAbstract<Shortlink>, IFeature<DefaultResponseDto<Shortlink>, string>
 {
-    public GetShortlinkByCodeQueryHandler(IRepositories repositories) : base(repositories)
-    {
-    }
+  public GetShortlinkByCodeQueryHandler(IRepositories repositories) : base(repositories)
+  {
+  }
 
-    public async Task<DefaultResponseDto<Shortlink>> Handle(string command, CancellationToken cancellationToken)
-    {
-        Shortlink? shortlink = await Repositories.Shortlink.GetByCodeAsync(command, cancellationToken);
+  public async Task<DefaultResponseDto<Shortlink>> Handle(string command, CancellationToken cancellationToken)
+  {
+    Shortlink? shortlink = await Repositories.Shortlink.GetByCodeAsync(command, cancellationToken);
 
-        if (shortlink is not null)
-            await new AddOneVisitorOnShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
+    if (shortlink is not null)
+      await new AddOneVisitorOnShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
 
-        return DefaultResponseDto<Shortlink>.Create(shortlink);
-    }
+    return DefaultResponseDto<Shortlink>.Create(shortlink);
+  }
 }

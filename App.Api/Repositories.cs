@@ -13,11 +13,6 @@ public partial class Repositories : IRepositories
   public IShortlinkRepository Shortlink { get; private set; }
   public IShortlinkAccessRepository ShortlinkAccess { get; private set; }
 
-  public IGatewayRepository Gateway { get; private set; }
-  public IGatewayCredentialRepository GatewayCredential { get; private set; }
-  public IGatewayCategoryRepository GatewayCategory { get; private set; }
-  public IGatewayParameterRepository GatewayParameter { get; private set; }
-  public IGatewayScheduleRepository GatewaySchedule { get; private set; }
   #endregion
 
   #region Repositorie - Module System
@@ -29,12 +24,6 @@ public partial class Repositories : IRepositories
     #region Repositories - Module Tools
     Shortlink = new ShortlinkRepository(defaultContext);
     ShortlinkAccess = new ShortlinkAccessRepository(defaultContext);
-
-    Gateway = new GatewayRepository(defaultContext);
-    GatewayCredential = new GatewayCredentialRepository(defaultContext);
-    GatewayCategory = new GatewayCategoryRepository(defaultContext);
-    GatewayParameter = new GatewayParameterRepository(defaultContext);
-    GatewaySchedule = new GatewayScheduleRepository(defaultContext);
     #endregion
 
     #region Repositorie - Module System

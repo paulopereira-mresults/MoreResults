@@ -9,21 +9,21 @@ namespace App.Business.Features.System.Plugins.Commands;
 
 public class AddPluginCommandHandler : FeatureAbstract<Plugin>, IFeature<DefaultResponseDto<Plugin>, Plugin>
 {
-    private PluginValidator _validator = new PluginValidator();
+  private PluginValidator _validator = new PluginValidator();
 
-    public AddPluginCommandHandler(IRepositories repositories) : base(repositories)
-    {
-    }
+  public AddPluginCommandHandler(IRepositories repositories) : base(repositories)
+  {
+  }
 
-    public async Task<DefaultResponseDto<Plugin>> Handle(Plugin command, CancellationToken cancellationToken)
-    {
-        Plugin addedPlugin = new Plugin(command.Controller, command.Resume, command.Source);
+  public async Task<DefaultResponseDto<Plugin>> Handle(Plugin command, CancellationToken cancellationToken)
+  {
+    Plugin addedPlugin = new Plugin(command.Controller, command.Resume, command.Source);
 
-        if (_validator.ValidationForAddOrUpdate(addedPlugin).IsValid)
-            addedPlugin = await Repositories.Plugin.AddAsync(addedPlugin, cancellationToken);
+    if (_validator.ValidationForAddOrUpdate(addedPlugin).IsValid)
+      addedPlugin = await Repositories.Plugin.AddAsync(addedPlugin, cancellationToken);
 
-        return DefaultResponseDto<Plugin>
-            .Create(addedPlugin)
-            .AddNotifications(_validator.Notifications);
-    }
+    return DefaultResponseDto<Plugin>
+        .Create(addedPlugin)
+        .AddNotifications(_validator.Notifications);
+  }
 }

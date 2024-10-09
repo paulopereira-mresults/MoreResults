@@ -3,6 +3,6 @@ using App.IoC.Abstractions;
 
 namespace App.IoC.Repositories.System;
 
-public interface IPluginRepository: IRepository<Plugin>
+public interface IPluginRepository : IRepository<Plugin>
 {
 }

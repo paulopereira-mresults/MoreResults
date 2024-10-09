@@ -2,5 +2,5 @@
 
 public interface IBusiness
 {
-    IRepositories Repositories { get; }
+  IRepositories Repositories { get; }
 }

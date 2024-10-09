@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using App.Api.Controllers.Abstractions;
+﻿using App.Api.Controllers.Abstractions;
 using App.IoC;
+using Microsoft.AspNetCore.Mvc;
 
 namespace App.Api.Controllers;
 

@@ -2,6 +2,6 @@
 
 public interface IExternalPlugin
 {
-    string Name { get; }
-    void Execute();
+  string Name { get; }
+  void Execute();
 }

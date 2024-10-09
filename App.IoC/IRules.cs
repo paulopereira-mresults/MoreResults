@@ -5,16 +5,11 @@ namespace App.IoC;
 
 public partial interface IRules
 {
-    #region Business - Module Tools
-    IShortlinkBusiness Shortlink { get; }
+  #region Business - Module Tools
+  IShortlinkBusiness Shortlink { get; }
+  #endregion
 
-    IGatewayCategoryBusiness GatewayCategory { get; }
-    IGatewayParameterBusiness GatewayParameter { get; }
-    IGatewayBusiness Gateway { get; }
-    IGatewayCredentialBusiness GatewayCredential { get; }
-    #endregion
-
-    #region Business - Module System
-    IPluginBusiness Plugin { get; }
-    #endregion
+  #region Business - Module System
+  IPluginBusiness Plugin { get; }
+  #endregion
 }

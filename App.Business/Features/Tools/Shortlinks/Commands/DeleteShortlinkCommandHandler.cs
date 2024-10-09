@@ -9,30 +9,30 @@ namespace App.Business.Features.Tools.Shortlinks.Commands;
 
 public class DeleteShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeature<DefaultResponseDto<bool>, int>
 {
-    private readonly ShortlinkValidator _validator;
+  private readonly ShortlinkValidator _validator;
 
-    public DeleteShortlinkCommandHandler(IRepositories repositories) : base(repositories)
+  public DeleteShortlinkCommandHandler(IRepositories repositories) : base(repositories)
+  {
+    _validator = new ShortlinkValidator();
+  }
+
+  public async Task<DefaultResponseDto<bool>> Handle(int command, CancellationToken cancellationToken)
+  {
+    Shortlink? shortlink = await Repositories
+        .Shortlink
+        .GetByIdAsync(command, cancellationToken);
+
+    bool isDeleted = false;
+
+    if (_validator.ValidationForDelete(shortlink).IsValid)
     {
-        _validator = new ShortlinkValidator();
+      isDeleted = await Repositories
+          .Shortlink
+          .DeleteAsync(shortlink, cancellationToken);
     }
 
-    public async Task<DefaultResponseDto<bool>> Handle(int command, CancellationToken cancellationToken)
-    {
-        Shortlink? shortlink = await Repositories
-            .Shortlink
-            .GetByIdAsync(command, cancellationToken);
-
-        bool isDeleted = false;
-
-        if (_validator.ValidationForDelete(shortlink).IsValid)
-        {
-            isDeleted = await Repositories
-                .Shortlink
-                .DeleteAsync(shortlink, cancellationToken);
-        }
-
-        return DefaultResponseDto<bool>
-            .Create(isDeleted)
-            .AddNotifications(_validator.Notifications);
-    }
+    return DefaultResponseDto<bool>
+        .Create(isDeleted)
+        .AddNotifications(_validator.Notifications);
+  }
 }

@@ -5,17 +5,12 @@ namespace App.IoC;
 
 public partial interface IRepositories
 {
-    #region Repositories - Module Tools
-    IShortlinkRepository Shortlink { get; }
-    IShortlinkAccessRepository ShortlinkAccess { get; }
+  #region Repositories - Module Tools
+  IShortlinkRepository Shortlink { get; }
+  IShortlinkAccessRepository ShortlinkAccess { get; }
+  #endregion
 
-    IGatewayCategoryRepository GatewayCategory { get; }
-    IGatewayRepository Gateway { get; }
-    IGatewayCredentialRepository GatewayCredential { get; }
-    IGatewayParameterRepository GatewayParameter { get; }
-    #endregion
-
-    #region Repositories - Module System
-    IPluginRepository Plugin { get; }
-    #endregion
+  #region Repositories - Module System
+  IPluginRepository Plugin { get; }
+  #endregion
 }

@@ -2,6 +2,6 @@
 
 public class Name
 {
-    public string Principal { get; set; }
-    public string? Alternative { get; set; }
+  public string Principal { get; set; }
+  public string? Alternative { get; set; }
 }

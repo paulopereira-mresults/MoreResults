@@ -7,7 +7,7 @@ namespace App.Repository.System;
 
 public class PluginRepository : RepositoryAbstract<Plugin>, IPluginRepository
 {
-    public PluginRepository(DefaultContext context) : base(context)
-    {
-    }
+  public PluginRepository(DefaultContext context) : base(context)
+  {
+  }
 }

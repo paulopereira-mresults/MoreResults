@@ -13,11 +13,6 @@ public partial class Rules : IRules
 
   #region Business - Module Tools
   public IShortlinkBusiness Shortlink { get; }
-
-  public IGatewayCategoryBusiness GatewayCategory { get; }
-  public IGatewayParameterBusiness GatewayParameter { get; }
-  public IGatewayBusiness Gateway { get; }
-  public IGatewayCredentialBusiness GatewayCredential { get; }
   #endregion
 
 
@@ -31,11 +26,6 @@ public partial class Rules : IRules
 
     #region Business - Module Tools
     Shortlink = new ShortlinkBusiness(_repositories);
-
-    GatewayCategory = new GatewayCategoryBusiness(_repositories);
-    GatewayParameter = new GatewayParameterBusiness(_repositories);
-    Gateway = new GatewayBusiness(_repositories);
-    GatewayCredential = new GatewayCredentialBusiness(_repositories);
     #endregion
 
 

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using App.Domain.Entities.Tools;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using App.Domain.Entities.Tools;
 
 namespace App.Infrastructure.Mapping.Tools;
 

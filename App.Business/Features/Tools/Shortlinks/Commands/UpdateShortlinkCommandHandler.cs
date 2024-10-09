@@ -12,24 +12,24 @@ namespace App.Business.Features.Tools.Shortlinks.Commands;
 /// </summary>
 public class UpdateShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeature<DefaultResponseDto<Shortlink>, Shortlink>
 {
-    private readonly ShortlinkValidator _validator;
+  private readonly ShortlinkValidator _validator;
 
-    public UpdateShortlinkCommandHandler(IRepositories repositories): base(repositories)
-    {
-         _validator = new ShortlinkValidator();
-    }
+  public UpdateShortlinkCommandHandler(IRepositories repositories) : base(repositories)
+  {
+    _validator = new ShortlinkValidator();
+  }
 
-    public async Task<DefaultResponseDto<Shortlink>> Handle(Shortlink request, CancellationToken cancellationToken)
-    {
-        Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(request.Id, cancellationToken);
-        shortlink.Update(request.Link, request.Resume);
+  public async Task<DefaultResponseDto<Shortlink>> Handle(Shortlink request, CancellationToken cancellationToken)
+  {
+    Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(request.Id, cancellationToken);
+    shortlink.Update(request.Link, request.Resume);
 
-        if (_validator.ValidationForAddOrUpdate(shortlink).IsValid)
-            shortlink = await Repositories.Shortlink.UpdateAsync(request, cancellationToken);
+    if (_validator.ValidationForAddOrUpdate(shortlink).IsValid)
+      shortlink = await Repositories.Shortlink.UpdateAsync(request, cancellationToken);
 
-        return DefaultResponseDto<Shortlink>
-            .Create(shortlink)
-            .AddNotifications(_validator.Notifications);
-    }
+    return DefaultResponseDto<Shortlink>
+        .Create(shortlink)
+        .AddNotifications(_validator.Notifications);
+  }
 
 }

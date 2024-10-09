@@ -7,8 +7,8 @@ namespace App.Repository.Tools;
 
 public class ShortlinkAccessRepository : RepositoryAbstract<ShortlinkAccess>, IShortlinkAccessRepository
 {
-    public ShortlinkAccessRepository(DefaultContext context) : base(context)
-    {
-    }
+  public ShortlinkAccessRepository(DefaultContext context) : base(context)
+  {
+  }
 
 }
