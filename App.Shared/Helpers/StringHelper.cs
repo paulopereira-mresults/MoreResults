@@ -9,12 +9,12 @@ public class StringHelper
   {
     if (string.IsNullOrEmpty(characters))
     {
-      throw new ArgumentException("A string de caracteres não pode ser nula ou vazia.", nameof(characters));
+      throw new ArgumentException("A string de caracteres não pode ser nula ou vazia.");
     }
 
     if (length <= 0)
     {
-      throw new ArgumentException("O comprimento do código deve ser um número positivo.", nameof(length));
+      throw new ArgumentException("O comprimento do código deve ser um número positivo.");
     }
 
     Random random = new Random();

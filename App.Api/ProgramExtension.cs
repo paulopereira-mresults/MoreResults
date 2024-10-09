@@ -1,8 +1,11 @@
 ﻿using App.Api.Middlewares;
 using App.Infrastructure.Contexts;
 using Hangfire;
-using Hangfire.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using Hangfire.MySql;
+using System.Transactions;
+using App.Shared.Filters;
+using Hangfire.Dashboard;
 
 namespace App.Api;
 
@@ -39,24 +42,49 @@ public static class ProgramExtension
   /// <summary>
   /// Configura o módulo de agendamento de serviços e tarefas.
   /// </summary>
-  public static IHostApplicationBuilder ConfigureSchedules(this IHostApplicationBuilder builder, string connectionString)
+  public static IHostApplicationBuilder ConfigureSchedules(this IHostApplicationBuilder builder, string nameOfConnectionString)
   {
-    // Configurando o Hangfire para usar SQL Server
+    string connectionString = builder.Configuration.GetConnectionString(nameOfConnectionString);
+    var serverVersion = ServerVersion.AutoDetect(connectionString);
+
+
     builder.Services.AddHangfire(configuration => configuration
         .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
         .UseSimpleAssemblyNameTypeSerializer()
         .UseRecommendedSerializerSettings()
-        .UseSqlServerStorage(builder.Configuration.GetConnectionString(connectionString), new SqlServerStorageOptions
-        {
-          CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-          SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-          QueuePollInterval = TimeSpan.Zero,
-          UseRecommendedIsolationLevel = true,
-          DisableGlobalLocks = true
-        }));
+        .UseStorage(new MySqlStorage(
+          connectionString,
+          new MySqlStorageOptions
+          {
+            TransactionIsolationLevel = IsolationLevel.ReadCommitted,
+            QueuePollInterval = TimeSpan.FromSeconds(15),
+            JobExpirationCheckInterval = TimeSpan.FromHours(1),
+            CountersAggregateInterval = TimeSpan.FromMinutes(5),
+            PrepareSchemaIfNecessary = true,
+            DashboardJobListLimit = 100,
+            TransactionTimeout = TimeSpan.FromMinutes(1)
+          }
+        ))
+        .WithJobExpirationTimeout(TimeSpan.FromDays(1)));
 
-    // Adicionando o servidor do Hangfire
+    // Add the processing server as IHostedService
     builder.Services.AddHangfireServer();
+
+    return builder;
+  }
+
+  public static WebApplication UseHangfireDashboard(this WebApplication builder)
+  {
+    builder.UseHangfireDashboard("/hangfire", new DashboardOptions
+    {
+      Authorization = new[] { new DashboardNoAuthorizationFilter() },
+      /**
+       * Habilita o hangfire no servidor remoto
+       * @see https://docs.hangfire.io/en/latest/configuration/using-dashboard.html#read-only-view
+       */
+      IsReadOnlyFunc = (DashboardContext context) => true
+    });
+    builder.MapHangfireDashboard();
 
     return builder;
   }

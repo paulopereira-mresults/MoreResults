@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Adicione o DbContext ao cont�iner de DI
 builder.ConfigureDatabase("Default");
+builder.ConfigureSchedules("Hangfire");
 
 builder
     .Services
@@ -27,15 +28,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 app.UseMiddlewares();
-
-// Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
+app.UseHangfireDashboard();
 app.Run();

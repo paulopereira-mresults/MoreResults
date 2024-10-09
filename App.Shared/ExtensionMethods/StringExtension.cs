@@ -38,7 +38,7 @@ public static class StringExtension
   /// </summary>
   /// <param name="input">String a ser calculada.</param>
   /// <returns></returns>
-  public static string GetHash(this string input)
+  public static string GetMd5(this string input)
   {
     MD5 md5Hash = MD5.Create();
     // Converter a String para array de bytes, que é como a biblioteca trabalha.
@@ -84,7 +84,7 @@ public static class StringExtension
   /// </summary>
   /// <param name="value"></param>
   /// <returns></returns>
-  public static decimal ConvertToDecimal(this string value)
+  public static decimal ToDecimal(this string value)
   {
     string _valueString = value.Replace("R$ ", "");
     return Convert.ToDecimal(_valueString);
@@ -134,7 +134,6 @@ public static class StringExtension
   public static byte[] DecodeToFile(this string stringInBase64)
     => Convert.FromBase64String(stringInBase64);
 
-
   /// <summary>
   /// Valida se a string base64 é valida.
   /// </summary>
@@ -162,7 +161,7 @@ public static class StringExtension
   public static string OnlyNumbers(this string input, string prefix = "")
   {
     // Utiliza expressão regular para substituir todos os caracteres que não sejam números por uma string vazia
-    return prefix + Regex.Replace(input, @"[^0-9]", "");
+    return prefix + Regex.Replace(input, @"[^0-9]", string.Empty);
   }
 
   /// <summary>
