@@ -6,11 +6,41 @@ using Hangfire.MySql;
 using System.Transactions;
 using App.Shared.Filters;
 using Hangfire.Dashboard;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace App.Api;
 
 public static class ProgramExtension
 {
+  /// <summary>
+  /// Configura o uso de autenticação JWT no sistema.
+  /// </summary>
+  public static IHostApplicationBuilder ConfigureAuthentication(this IHostApplicationBuilder builder)
+  {
+    string keyString = File.ReadAllText("private.key");
+    var key = Encoding.ASCII.GetBytes(keyString);
+    builder.Services.AddAuthentication(x =>
+    {
+      x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+      x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(x =>
+    {
+      x.RequireHttpsMetadata = false;
+      x.SaveToken = true;
+      x.TokenValidationParameters = new TokenValidationParameters()
+      {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+      };
+    });
+
+    return builder;
+  }
+
   /// <summary>
   /// Configura a conexão principal com o banco de dados.
   /// </summary>
@@ -73,6 +103,9 @@ public static class ProgramExtension
     return builder;
   }
 
+  /// <summary>
+  /// Configura o dashboard do Hangfire
+  /// </summary>
   public static WebApplication UseHangfireDashboard(this WebApplication builder)
   {
     builder.UseHangfireDashboard("/hangfire", new DashboardOptions
@@ -94,4 +127,11 @@ public static class ProgramExtension
     return builder.UseMiddleware<LogMiddleware>();
   }
 
+  public static WebApplication UseJwt(this WebApplication builder)
+  {
+    builder.UseAuthentication();
+    builder.UseAuthorization();
+
+    return builder;
+  }
 }
