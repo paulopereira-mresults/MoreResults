@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Enums\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <None Remove="Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flunt.Br" Version="2.0.0" />
   </ItemGroup>
 
@@ -16,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Dto\Tools\" />
-    <Folder Include="Enums\" />
   </ItemGroup>
 
 </Project>

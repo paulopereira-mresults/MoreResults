@@ -8,10 +8,17 @@ A solução está dividida em projetos (camadas), cada um com sua responsabilida
 - **App.Repository:** Camada de acesso aos dados. Somente nesta camada devem ser escritas queries e demais consultas no banco de dados. Existem métodos genéricos para salvamento e atualização dos registros, no entanto, caso seja necessária a criação de métodos específicos para esta finalidade, estes devem ser escritos na camada de repositório.
 - **App.IoC:** Camada de inversão de controle.
 - **App.Infrastructure:** Camada com configurações estruturais do sistema como conexão com banco de dados e mapeamento das entidades.
--  **App.Domain:** Camada com informações de domínio da aplicação. Contem as entidades, enumeradores, objetos de valor e DTOs. Todos separados em contextos delimitados.
+- **App.Domain:** Camada com informações de domínio da aplicação. Contem as entidades, enumeradores, objetos de valor e DTOs. Todos separados em contextos delimitados.
 - **App.Business:** Camada com as regras de negócio da aplicação.
 - **App.Api:** Camada de apresentação.
 
 ## Núcleo do sistema
 O objetivo desta aplicação (solução) é servir de base estrutural para outras aplicações. O núcleo deve conter código e regras que serão herdadas por todos os demais projetos e sua estrutura, funcionalidades e regras não devem ser sobrescritas por projetos herdeiros. Qualquer mudança a ser feita no núcleo do sistema, deverá ser realizada na banch core e posteriormente herdada pelas demais branches.
 
+## Restrições
+Nesta aplicação, optamos por adotar algumas medidas para fazer com que o código fique suscinto e de fácil manutenção. Sendo assim, não utilizamos algumas bibliotecas como Automapper e Mediatr porque acrescentariam uma complexidade desnecessária ao código.
+
+### CQRS
+Optamos por usar uma abordagem mais simples para comandos e consultas sem o uso de Mediatr. Perceba que, dentro do projeto **Business** temos um diretório chamado *Features*. Em sua maioria, seguirá o mesmo padrão de divisão dos demais projetos obedecendo os contextos delimitados e haverá subdiretórios separados para *Commands*, *Queries* e *Validators* (quando necessário).
+
+## Testes unitários
