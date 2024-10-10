@@ -15,7 +15,7 @@ builder
     .AddControllers().ConfigureApiBehaviorOptions(options =>
     {
       /**
-       * Suprime a valida��o de ModelState padr�o do .NET.
+       * Suprime a validacao de ModelState padrao do .NET.
        * @see https://stackoverflow.com/questions/54942192/how-can-i-customize-the-error-response-in-web-api-with-net-core
        */
       options.SuppressModelStateInvalidFilter = true;

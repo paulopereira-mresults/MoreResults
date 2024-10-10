@@ -1,4 +1,6 @@
-﻿using App.Domain.Entities.Tools;
+﻿using App.Domain.Entities.Abstractions;
+using App.Domain.Entities.Tools;
+using App.Shared.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,26 +11,25 @@ public class ShortlinkMap : IEntityTypeConfiguration<Shortlink>
   public void Configure(EntityTypeBuilder<Shortlink> builder)
   {
     builder
-        .ToTable($"TOOLS_{nameof(Shortlink).ToUpper()}");
+        .ToTable($"{SystemModules.TOOLS}_{nameof(Shortlink).ToUpper()}");
 
     builder
         .HasKey(a => a.Id);
 
     builder
       .Property(a => a.Id)
-      .HasColumnType("ID")
-      .IsRequired()
-      .UseIdentityColumn(1, 1);
+      .HasColumnType(nameof(EntityAbstract.Id).ToUpper())
+      .IsRequired();
 
     builder
         .Property(a => a.CreateDate)
-        .HasColumnName(nameof(Shortlink.CreateDate).ToUpper())
+        .HasColumnName(nameof(EntityAbstract.CreateDate).ToUpper())
         .HasColumnType("DATETIME")
         .IsRequired();
 
     builder
         .Property(a => a.UpdateDate)
-        .HasColumnName(nameof(Shortlink.UpdateDate).ToUpper())
+        .HasColumnName(nameof(EntityAbstract.UpdateDate).ToUpper())
         .HasColumnType("DATETIME")
         .IsRequired(false)
         .HasDefaultValue(null);

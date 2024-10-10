@@ -67,16 +67,16 @@ public static class StringExtension
   /// </summary>
   /// <param name="value"></param>
   /// <returns></returns>
-  public static string ControlSpaces(this string? value)
+  public static string ControlSpaces(this string? text)
   {
-    if (string.IsNullOrEmpty(value))
+    if (string.IsNullOrEmpty(text))
       return string.Empty;
 
-    string newString = Regex.Replace(value, @"/\s{2,}/gm", "");
-    newString = Regex.Replace(value, @"/$\s{2,}/gm", "");
-    newString = Regex.Replace(value, @"/\s{2,}^/gm", "");
+    // Remove espaços extras entre as palavras
+    string resultado = Regex.Replace(text, @"\s+", " ");
 
-    return newString;
+    // Remove espaços no início e no fim da string
+    return resultado.Trim();
   }
 
   /// <summary>

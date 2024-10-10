@@ -127,6 +127,36 @@ public class StringExtensionTest
       .Be(expected);
   }
 
+  [Fact]
+  public void ControlSpaces__Espera_que_o_metodo_devolva_uma_string_vazia_caso_o_parametro_seja_nulo()
+  {
+    // Arrange
+    string? text = null;
+
+    // Act
+    string result = text.ControlSpaces();
+
+    // Assert
+    result
+      .Should()
+      .BeEmpty();
+  }
+
+  [Fact]
+  public void ControlSpaces__Espera_que_o_metodo_devolva_uma_string_vazia_caso_o_parametro_seja_vazio()
+  {
+    // Arrange
+    string? text = string.Empty;
+
+    // Act
+    string result = text.ControlSpaces();
+
+    // Assert
+    result
+      .Should()
+      .BeEmpty();
+  }
+
   [Theory]
   [InlineData("more results", "MR")]
   [InlineData("Microsoft Visual Studio", "MVS")]

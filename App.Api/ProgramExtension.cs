@@ -1,14 +1,14 @@
 ﻿using App.Api.Middlewares;
 using App.Infrastructure.Contexts;
-using Hangfire;
-using Microsoft.EntityFrameworkCore;
-using Hangfire.MySql;
-using System.Transactions;
 using App.Shared.Filters;
+using Hangfire;
 using Hangfire.Dashboard;
+using Hangfire.MySql;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Transactions;
 
 namespace App.Api;
 

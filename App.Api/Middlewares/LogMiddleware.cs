@@ -13,7 +13,7 @@ public class LogMiddleware
 
   public async Task InvokeAsync(HttpContext context)
   {
-    await LogHelper.WriteAsync(context.Request.Path, context.Request.Method, context.Response.StatusCode, context.Connection.Id);
+    await LogService.WriteAsync(context.Request.Path, context.Request.Method, context.Response.StatusCode, context.Connection.Id);
     await _next(context);
   }
 }
