@@ -1,8 +1,6 @@
-﻿using App.Business.Rules.System;
-using App.Business.Rules.Tools;
+﻿using App.Business.Rules.Tools;
 using App.Infrastructure.Contexts;
 using App.IoC;
-using App.IoC.Rules.System;
 using App.IoC.Rules.Tools;
 
 namespace App.Api;
@@ -15,22 +13,12 @@ public partial class Rules : IRules
   public IShortlinkBusiness Shortlink { get; }
   #endregion
 
-
-  #region Business - Module System
-  public IPluginBusiness Plugin { get; }
-  #endregion
-
   public Rules(DefaultContext context)
   {
     _repositories = new Repositories(context);
 
     #region Business - Module Tools
     Shortlink = new ShortlinkBusiness(_repositories);
-    #endregion
-
-
-    #region Business - Module System
-    Plugin = new PluginBusiness(_repositories);
     #endregion
   }
 }

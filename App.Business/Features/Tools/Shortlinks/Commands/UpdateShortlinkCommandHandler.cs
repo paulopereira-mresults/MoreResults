@@ -22,7 +22,7 @@ public class UpdateShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeatur
   public async Task<DefaultResponseDto<Shortlink>> HandleAsync(Shortlink request, CancellationToken cancellationToken)
   {
     Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(request.Id, cancellationToken);
-    shortlink.Update(request.Link, request.Resume);
+    shortlink?.Update(request.Link, request.Resume);
 
     if (_validator.ValidationForAddOrUpdate(shortlink).IsValid)
       shortlink = await Repositories.Shortlink.UpdateAsync(request, cancellationToken);

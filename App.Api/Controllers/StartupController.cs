@@ -16,8 +16,6 @@ public class StartupController : ControllerAbstract
   [HttpGet]
   public async Task<IActionResult> Up()
   {
-    Plugins.ExecuteBefore(nameof(StartupController), null);
-
     DateTime? date = DateTime.Now;
     return Ok($"Bem vindo(a). Hoje é {date:g}");
   }
@@ -26,8 +24,6 @@ public class StartupController : ControllerAbstract
   [HttpGet("with-auth")]
   public async Task<IActionResult> UpWithAuth()
   {
-    Plugins.ExecuteBefore(nameof(StartupController), null);
-
     DateTime? date = DateTime.Now;
     return Ok($"Bem vindo(a). Hoje é {date:g}");
   }

@@ -5,11 +5,9 @@ using Moq;
 
 namespace App.Test.App_Repository.Repositories;
 
-public class ShortlinkAccessRepositoryMock
+public class ShortlinkAccessRepositoryMock: AbstractMock<IShortlinkAccessRepository>
 {
-  public IShortlinkAccessRepository Mock { get; private set; }
-
-  public ShortlinkAccessRepositoryMock()
+  public ShortlinkAccessRepositoryMock WithCorrectlyAccess()
   {
     ShortlinkAccess shortlinkAccess = new Faker<ShortlinkAccess>()
       .RuleFor(x => x.Id, 1)
@@ -17,9 +15,15 @@ public class ShortlinkAccessRepositoryMock
       .RuleFor(x => x.Ip, f => f.Internet.Ip())
       .Generate();
 
-    Mock<IShortlinkAccessRepository> mock = new Mock<IShortlinkAccessRepository>();
-    mock.Setup(x => x.AddAsync(It.IsAny<ShortlinkAccess>(), CancellationToken.None).Result).Returns(shortlinkAccess);
+    _mock.Setup(x => x.AddAsync(It.IsAny<ShortlinkAccess>(), CancellationToken.None).Result).Returns(shortlinkAccess);
 
-    Mock = mock.Object;
+    return this;
+  }
+
+  public ShortlinkAccessRepositoryMock WithCorrectlyAddedAccess()
+  {
+    _mock.Setup(x => x.AddAsync(It.IsAny<ShortlinkAccess>(), CancellationToken.None).Result).Returns(new ShortlinkAccess{ Id = 10 });
+
+    return this;
   }
 }
