@@ -2,5 +2,5 @@
 
 public interface IFeature<TResult, TCommand>
 {
-  Task<TResult> Handle(TCommand command, CancellationToken cancellationToken);
+  Task<TResult> HandleAsync(TCommand command, CancellationToken cancellationToken);
 }

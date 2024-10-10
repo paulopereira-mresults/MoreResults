@@ -12,7 +12,7 @@ public class ListPluginsQueryHandler : FeatureAbstract<Plugin>, IFeature<Default
   {
   }
 
-  public async Task<DefaultResponseDto<IEnumerable<Plugin>>> Handle(int command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<IEnumerable<Plugin>>> HandleAsync(int command, CancellationToken cancellationToken)
   {
     IEnumerable<Plugin> plugins = await Repositories.Plugin.ListAsync(cancellationToken);
 

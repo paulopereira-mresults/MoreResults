@@ -16,7 +16,7 @@ public class DeleteShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeatur
     _validator = new ShortlinkValidator();
   }
 
-  public async Task<DefaultResponseDto<bool>> Handle(int command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<bool>> HandleAsync(int command, CancellationToken cancellationToken)
   {
     Shortlink? shortlink = await Repositories
         .Shortlink

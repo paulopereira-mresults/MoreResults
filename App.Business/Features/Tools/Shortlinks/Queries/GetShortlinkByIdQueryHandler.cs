@@ -13,12 +13,12 @@ public class GetShortlinkByIdQueryHandler : FeatureAbstract<Shortlink>, IFeature
   {
   }
 
-  public async Task<DefaultResponseDto<Shortlink>> Handle(int command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<Shortlink>> HandleAsync(int command, CancellationToken cancellationToken)
   {
     Shortlink? shortlink = await Repositories.Shortlink.GetByIdAsync(command, cancellationToken);
 
     if (shortlink is not null)
-      await new AddOneVisitorOnShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
+      await new AddOneVisitorOnShortlinkCommandHandler(Repositories).HandleAsync(shortlink, cancellationToken);
 
     return DefaultResponseDto<Shortlink>.Create(shortlink);
   }

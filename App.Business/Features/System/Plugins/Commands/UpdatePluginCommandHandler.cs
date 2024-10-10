@@ -15,7 +15,7 @@ public class UpdatePluginCommandHandler : FeatureAbstract<Plugin>, IFeature<Defa
   {
   }
 
-  public async Task<DefaultResponseDto<Plugin>> Handle(Plugin command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<Plugin>> HandleAsync(Plugin command, CancellationToken cancellationToken)
   {
     Plugin? updatedPlugin = await Repositories.Plugin.GetByIdAsync(command.Id, cancellationToken);
 

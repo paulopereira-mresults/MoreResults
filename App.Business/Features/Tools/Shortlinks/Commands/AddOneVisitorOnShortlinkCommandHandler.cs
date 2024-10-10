@@ -11,7 +11,7 @@ public class AddOneVisitorOnShortlinkCommandHandler : FeatureAbstract<ShortlinkA
   {
   }
 
-  public async Task<bool> Handle(Shortlink command, CancellationToken cancellationToken)
+  public async Task<bool> HandleAsync(Shortlink command, CancellationToken cancellationToken)
   {
     ShortlinkAccess access = new ShortlinkAccess(command.Id, string.Empty);
     access = await Repositories.ShortlinkAccess.AddAsync(access, cancellationToken);

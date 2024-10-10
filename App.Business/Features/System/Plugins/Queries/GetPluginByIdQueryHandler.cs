@@ -12,7 +12,7 @@ public class GetPluginByIdQueryHandler : FeatureAbstract<Plugin>, IFeature<Defau
   {
   }
 
-  public async Task<DefaultResponseDto<Plugin>> Handle(int command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<Plugin>> HandleAsync(int command, CancellationToken cancellationToken)
   {
     Plugin? plugin = await Repositories.Plugin.GetByIdAsync(command, cancellationToken);
     return DefaultResponseDto<Plugin>.Create(plugin);

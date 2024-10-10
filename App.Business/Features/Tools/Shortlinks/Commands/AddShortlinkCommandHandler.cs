@@ -19,7 +19,7 @@ public class AddShortlinkCommandHandler : FeatureAbstract<Shortlink>, IFeature<D
     _validator = new ShortlinkValidator();
   }
 
-  public async Task<DefaultResponseDto<Shortlink>> Handle(Shortlink request, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<Shortlink>> HandleAsync(Shortlink request, CancellationToken cancellationToken)
   {
     Shortlink? shortlink = new(request.Link, request.Resume);
 

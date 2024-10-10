@@ -12,7 +12,7 @@ public class ListShortlinksQueryHandler : FeatureAbstract<Shortlink>, IFeature<D
   {
   }
 
-  public async Task<DefaultResponseDto<IEnumerable<Shortlink>>> Handle(int command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<IEnumerable<Shortlink>>> HandleAsync(int command, CancellationToken cancellationToken)
   {
     IEnumerable<Shortlink> shorlinks = await Repositories.Shortlink.ListAsync(cancellationToken);
 

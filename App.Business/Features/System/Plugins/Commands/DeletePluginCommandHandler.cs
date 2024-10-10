@@ -15,7 +15,7 @@ public class DeletePluginCommandHandler : FeatureAbstract<Plugin>, IFeature<Defa
   {
   }
 
-  public async Task<DefaultResponseDto<bool>> Handle(int id, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<bool>> HandleAsync(int id, CancellationToken cancellationToken)
   {
     Plugin? pluginFounded = await Repositories.Plugin.GetByIdAsync(id, cancellationToken);
 

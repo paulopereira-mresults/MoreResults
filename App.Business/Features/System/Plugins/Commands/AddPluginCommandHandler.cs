@@ -15,7 +15,7 @@ public class AddPluginCommandHandler : FeatureAbstract<Plugin>, IFeature<Default
   {
   }
 
-  public async Task<DefaultResponseDto<Plugin>> Handle(Plugin command, CancellationToken cancellationToken)
+  public async Task<DefaultResponseDto<Plugin>> HandleAsync(Plugin command, CancellationToken cancellationToken)
   {
     Plugin addedPlugin = new Plugin(command.Controller, command.Resume, command.Source);
 

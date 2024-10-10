@@ -13,21 +13,21 @@ public class ShortlinkBusiness : BusinessAbstract, IShortlinkBusiness
   public ShortlinkBusiness(IRepositories repositories) : base(repositories) { }
 
   public async Task<DefaultResponseDto<IEnumerable<Shortlink>>> List(CancellationToken cancellationToken)
-      => await new ListShortlinksQueryHandler(Repositories).Handle(0, cancellationToken);
+      => await new ListShortlinksQueryHandler(Repositories).HandleAsync(0, cancellationToken);
 
   public async Task<DefaultResponseDto<Shortlink>> GetByCodeAsync(string code, CancellationToken cancellationToken)
-      => await new GetShortlinkByCodeQueryHandler(Repositories).Handle(code, cancellationToken);
+      => await new GetShortlinkByCodeQueryHandler(Repositories).HandleAsync(code, cancellationToken);
 
   public async Task<DefaultResponseDto<Shortlink>> GetByIdAsync(int id, CancellationToken cancellationToken)
-      => await new GetShortlinkByIdQueryHandler(Repositories).Handle(id, cancellationToken);
+      => await new GetShortlinkByIdQueryHandler(Repositories).HandleAsync(id, cancellationToken);
 
   public async Task<DefaultResponseDto<Shortlink>?> AddAsync(Shortlink shortlink, CancellationToken cancellationToken)
-      => await new AddShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
+      => await new AddShortlinkCommandHandler(Repositories).HandleAsync(shortlink, cancellationToken);
 
   public async Task<DefaultResponseDto<Shortlink>?> UpdateAsync(Shortlink shortlink, CancellationToken cancellationToken)
-      => await new UpdateShortlinkCommandHandler(Repositories).Handle(shortlink, cancellationToken);
+      => await new UpdateShortlinkCommandHandler(Repositories).HandleAsync(shortlink, cancellationToken);
 
   public async Task<DefaultResponseDto<bool>?> DeleteAsync(int id, CancellationToken cancellationToken)
-      => await new DeleteShortlinkCommandHandler(Repositories).Handle(id, cancellationToken);
+      => await new DeleteShortlinkCommandHandler(Repositories).HandleAsync(id, cancellationToken);
 
 }
