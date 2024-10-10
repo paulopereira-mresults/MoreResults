@@ -67,7 +67,7 @@ builder.Services.AddSwaggerGen(option =>
 });
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-// Configura a inge��o de depend�ncia
+// Configura a injeção de dependência
 builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
