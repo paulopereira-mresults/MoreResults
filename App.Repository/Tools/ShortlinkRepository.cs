@@ -6,12 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Repository.Tools;
 
-public class ShortlinkRepository : RepositoryAbstract<Shortlink>, IShortlinkRepository
+public class ShortlinkRepository(DefaultContext context) : RepositoryAbstract<Shortlink>(context), IShortlinkRepository
 {
-  public ShortlinkRepository(DefaultContext context) : base(context)
-  {
-  }
-
   public async Task<Shortlink?> GetByCodeAsync(string code, CancellationToken cancellationToken)
       => await Context.Shortlinks.FirstOrDefaultAsync(x => x.Code == code, cancellationToken);
 }

@@ -5,10 +5,6 @@ using App.Repository.Abstractions;
 
 namespace App.Repository.Tools;
 
-public class ShortlinkAccessRepository : RepositoryAbstract<ShortlinkAccess>, IShortlinkAccessRepository
+public class ShortlinkAccessRepository(DefaultContext context) : RepositoryAbstract<ShortlinkAccess>(context), IShortlinkAccessRepository
 {
-  public ShortlinkAccessRepository(DefaultContext context) : base(context)
-  {
-  }
-
 }

@@ -1,4 +1,6 @@
-﻿using App.Domain.Entities.Tools;
+﻿using App.Domain.Entities.Core;
+using App.Domain.Entities.Tools;
+using App.Infrastructure.Mapping.Core;
 using App.Infrastructure.Mapping.Tools;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,20 +13,26 @@ public class DefaultContext : DbContext
   {
   }
 
-  #region Módulo - Tools
+  #region Tools
   public DbSet<Shortlink> Shortlinks { get; set; }
   public DbSet<ShortlinkAccess> ShortlinksAccesses { get; set; }
   #endregion
 
+  #region Core
+  public DbSet<Account> Accounts { get; set; }
+  #endregion
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     base.OnModelCreating(modelBuilder);
 
-    #region Módulo - Tools
+    #region Tools
     modelBuilder.ApplyConfiguration(new ShortlinkMap());
     modelBuilder.ApplyConfiguration(new ShortlinkAccessMap());
     #endregion
 
+    #region Core
+    modelBuilder.ApplyConfiguration(new AccountMap());
+    #endregion
   }
 }
